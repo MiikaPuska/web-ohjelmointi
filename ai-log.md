@@ -1,0 +1,1 @@
+Minä kysyin tekoälyltä apuja siihen että mihin kohtaan koodia siirtelen aria-current="page".
