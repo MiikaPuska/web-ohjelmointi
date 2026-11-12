@@ -4,21 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Toivelomake | Antikvariaatti Vanha Sivu</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <p>Antikvariaatti Vanha Sivu</p>
+    <a href="index.html"><img src="images/logo.png" alt="Antikvariaatti Vanha Sivu" width="300" height="100"></a>
     <nav aria-label="Päävalikko">
-        <a href="index.html">Etusivu</a>
-        <a href="listing.html">Kirjaluettelo</a>
-        <a href="about.html">Tietoa meistä</a>
-        <a href="contact.html" aria-current="page">Toivelomake</a>  
+      <ul>
+        <li><a href="index.html">Etusivu</a></li>
+        <li><a href="listing.html">Kirjaluettelo</a></li>
+        <li><a href="about.html">Tietoa meistä</a></li>
+        <li><a href="contact.html" aria-current="page">Toivelomake</a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
     <h1>Toivelomake ja yhteystiedot</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+    <h2>Lähetä toive</h2>
+    <form>
+      <div>
+        <label for="nimi">Nimesi</label>
+        <input id="nimi" name="nimi" type="text" autocomplete="name" required>
+      </div>
+      <div>
+        <label for="sahkoposti">Sähköposti</label>
+        <input id="sahkoposti" name="sahkoposti" type="email" autocomplete="email" required>
+      </div>
+      <div>
+        <label for="kirja">Kirjan nimi tai kirjailija</label>
+        <input id="kirja" name="kirja" type="text" required>
+      </div>
+      <div>
+        <label for="lisatiedot">Lisätiedot</label>
+        <textarea id="lisatiedot" name="lisatiedot" rows="4"></textarea>
+      </div>
+      <button type="submit">Lähetä toive</button>
+    </form>
+    <h2>Yhteystiedot</h2>
+    <address>Antikvariaatti Vanha Sivu<br>Ähtäri</address>
   </main>
+
+  <footer>
+    <p>Antikvariaatti Vanha Sivu, Ähtäri</p>
+  </footer>
 </body>
 </html>
