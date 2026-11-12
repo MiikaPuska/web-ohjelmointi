@@ -1,0 +1,251 @@
+
+:root {
+  color-scheme: light dark;
+
+  /* värit (vaalea tila) */
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --text: #1b2a4a;
+  --muted: #4a5670;
+  --link: #b03a20;            
+  --accent: #e0583b;          
+  --border: #c9d0e0;         
+  --border-strong: #6a7590;   
+  --button-bg: #1b2a4a;
+  --button-text: #ffffff;
+  --focus: #b03a20;
+
+  
+  --font-body: Georgia, "Times New Roman", serif;
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --radius: 0.5rem;
+  --measure: 65ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111a2e;
+    --surface: #1a2540;
+    --text: #e8ecf5;
+    --muted: #aab5cc;
+    --link: #ff9d87;
+    --accent: #e0583b;
+    --border: #33415f;
+    --border-strong: #8794b3;
+    --button-bg: #ff9d87;
+    --button-text: #111a2e;
+    --focus: #ff9d87;
+  }
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-wrap: anywhere; /* pitkät sanat eivät aiheuta sivuttaisvieritystä */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin: 0 0 var(--space-2);
+}
+
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: 1.1rem; }
+
+p { margin: 0 0 var(--space-2); max-width: var(--measure); }
+
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+header {
+  background: var(--surface);
+  border-bottom: 4px solid var(--accent);
+  padding: var(--space-2);
+}
+
+header > a {
+  display: inline-block;
+}
+
+nav ul {
+  list-style: none;
+  margin: var(--space-1) 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+nav a {
+  display: inline-block;
+  padding: 0.6rem 0.9rem;
+  font-family: var(--font-ui);
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 3px solid transparent;
+}
+
+nav a:hover {
+  border-bottom-color: var(--accent);
+}
+
+nav a[aria-current="page"] {
+  font-weight: 700;
+  border-bottom-color: var(--accent);
+}
+
+
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-2) var(--space-4);
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: var(--space-2);
+  text-align: center;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+}
+
+footer p { margin-inline: auto; }
+
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+article {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: var(--space-2);
+}
+
+article p:last-child { margin-bottom: 0; }
+
+.meta {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+}
+
+.price {
+  font-family: var(--font-ui);
+  font-weight: 700;
+}
+
+
+form {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 36rem;
+  margin-bottom: var(--space-3);
+}
+
+label {
+  display: block;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.7rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius);
+}
+
+button,
+.button {
+  display: inline-block;
+  justify-self: start;
+  min-height: 2.75rem;
+  padding: 0.7rem 1.2rem;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--button-text);
+  background: var(--button-bg);
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+button:hover,
+.button:hover {
+  filter: brightness(1.15);
+}
+
+
+@media (min-width: 48em) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: var(--space-3);
+  }
+
+  nav ul { margin-top: 0; }
+
+  h1 { font-size: 2.25rem; }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64em) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

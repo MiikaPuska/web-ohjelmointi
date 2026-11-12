@@ -4,21 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Etusivu | Antikvariaatti Vanha Sivu</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <p>Antikvariaatti Vanha Sivu</p>
+    <a href="index.html"><img src="images/logo.png" alt="Antikvariaatti Vanha Sivu" width="300" height="100"></a>
     <nav aria-label="Päävalikko">
-      <a href="index.html" aria-current="page">Etusivu</a>
-      <a href="listing.html">Kirjaluettelo</a>
-      <a href="about.html">Tietoa meistä</a>
-      <a href="contact.html">Toivelomake</a>
+      <ul>
+        <li><a href="index.html" aria-current="page">Etusivu</a></li>
+        <li><a href="listing.html">Kirjaluettelo</a></li>
+        <li><a href="about.html">Tietoa meistä</a></li>
+        <li><a href="contact.html">Toivelomake</a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
     <h1>Antikvariaatti Vanha Sivu - kirjoja Ähtärissä</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+    <h2>Mitä sivuilta löytyy</h2>
+    <div class="cards">
+      <article>
+        <h3>Hae kirjaa</h3>
+        <p>Lorem ipsum dolor sit amet, haku nimellä tai kirjailijalla.</p>
+        <p><a href="listing.html">Siirry kirjaluetteloon</a></p>
+      </article>
+      <article>
+        <h3>Kunto ja hinta</h3>
+        <p>Lorem ipsum dolor sit amet, jokaisesta kirjasta näkyy kunto ja hinta.</p>
+      </article>
+      <article>
+        <h3>Etkö löytänyt?</h3>
+        <p>Lorem ipsum dolor sit amet, lähetä meille toive.</p>
+        <p><a href="contact.html">Täytä toivelomake</a></p>
+      </article>
+    </div>
   </main>
+
+  <footer>
+    <p>Antikvariaatti Vanha Sivu, Ähtäri</p>
+  </footer>
 </body>
 </html>
