@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Toivelomake | Antikvariaatti Vanha Sivu</title>
   <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
   <header>
@@ -23,24 +24,29 @@
     <h1>Toivelomake ja yhteystiedot</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
     <h2>Lähetä toive</h2>
-    <form>
+    <form id="wish-form" novalidate>
       <div>
         <label for="nimi">Nimesi</label>
-        <input id="nimi" name="nimi" type="text" autocomplete="name" required>
+        <input id="nimi" name="nimi" type="text" autocomplete="name" required aria-describedby="nimi-error">
+        <p class="error" id="nimi-error" hidden></p>
       </div>
       <div>
         <label for="sahkoposti">Sähköposti</label>
-        <input id="sahkoposti" name="sahkoposti" type="email" autocomplete="email" required>
+        <input id="sahkoposti" name="sahkoposti" type="email" autocomplete="email" required aria-describedby="sahkoposti-error">
+        <p class="error" id="sahkoposti-error" hidden></p>
       </div>
       <div>
         <label for="kirja">Kirjan nimi tai kirjailija</label>
-        <input id="kirja" name="kirja" type="text" required>
+        <input id="kirja" name="kirja" type="text" required aria-describedby="kirja-error">
+        <p class="error" id="kirja-error" hidden></p>
       </div>
       <div>
         <label for="lisatiedot">Lisätiedot</label>
         <textarea id="lisatiedot" name="lisatiedot" rows="4"></textarea>
       </div>
       <button type="submit">Lähetä toive</button>
+      <p class="meta">Keskeneräinen toive tallentuu tähän selaimeen.</p>
+      <p id="form-status" class="status" role="status"></p>
     </form>
     <h2>Yhteystiedot</h2>
     <address>Antikvariaatti Vanha Sivu<br>Ähtäri</address>

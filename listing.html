@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kirjaluettelo | Antikvariaatti Vanha Sivu</title>
   <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
   <header>
@@ -22,47 +23,101 @@
   <main>
     <h1>Kirjaluettelo</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-    <form>
+
+    <div id="tools" class="tools" hidden>
+      <form id="search-form" role="search">
+        <div>
+          <label for="haku">Hae nimellä tai kirjailijalla</label>
+          <input id="haku" name="haku" type="search" autocomplete="off">
+        </div>
+        <button type="submit">Hae</button>
+      </form>
+
+      <fieldset class="filters">
+        <legend>Kunto</legend>
+        <button type="button" data-filter="kaikki" aria-pressed="true">Kaikki</button>
+        <button type="button" data-filter="erinomainen" aria-pressed="false">Erinomainen</button>
+        <button type="button" data-filter="hyvä" aria-pressed="false">Hyvä</button>
+        <button type="button" data-filter="kohtalainen" aria-pressed="false">Kohtalainen</button>
+      </fieldset>
+
       <div>
-        <label for="haku">Hae nimellä tai kirjailijalla</label>
-        <input id="haku" name="haku" type="search">
+        <button type="button" id="sort-button" popovertarget="sort-menu">Järjestys: Nimi A–Ö</button>
+        <div id="sort-menu" popover>
+          <button type="button" data-sort="name" aria-pressed="true">Nimi A–Ö</button>
+          <button type="button" data-sort="price-asc" aria-pressed="false">Hinta, halvin ensin</button>
+          <button type="button" data-sort="price-desc" aria-pressed="false">Hinta, kallein ensin</button>
+        </div>
       </div>
-      <button type="submit">Hae</button>
-    </form>
+    </div>
+
+    <p id="status" class="status" role="status" tabindex="-1"></p>
+    <p id="empty" hidden>Mitään ei löytynyt. <a href="contact.html">Lähetä meille toive</a>, niin etsimme kirjaa.</p>
+
     <h2>Kirjat</h2>
-    <div class="cards">
-      <article>
-        <h3>Kirjan nimi 1</h3>
-        <p class="meta">Kirjailijan nimi · Kunto: hyvä</p>
-        <p class="price">300,00 €</p>
+    <div class="cards" id="book-list">
+      <article data-title="Seitsemän veljestä" data-author="Aleksis Kivi" data-condition="hyvä" data-price="1200">
+        <h3>Seitsemän veljestä</h3>
+        <p class="meta">Aleksis Kivi · Kunto: hyvä</p>
+        <p class="price">12,00 €</p>
       </article>
-      <article>
-        <h3>Kirjan nimi 2</h3>
-        <p class="meta">Kirjailijan nimi · Kunto: hyvä</p>
-        <p class="price">250,00 €</p>
+      <article data-title="Tuntematon sotilas" data-author="Väinö Linna" data-condition="kohtalainen" data-price="800">
+        <h3>Tuntematon sotilas</h3>
+        <p class="meta">Väinö Linna · Kunto: kohtalainen</p>
+        <p class="price">8,00 €</p>
       </article>
-      <article>
-        <h3>Kirjan nimi 3</h3>
-        <p class="meta">Kirjailijan nimi · Kunto: hyvä</p>
-        <p class="price">150,00 €</p>
+      <article data-title="Sinuhe egyptiläinen" data-author="Mika Waltari" data-condition="hyvä" data-price="1500">
+        <h3>Sinuhe egyptiläinen</h3>
+        <p class="meta">Mika Waltari · Kunto: hyvä</p>
+        <p class="price">15,00 €</p>
       </article>
-      <article>
-        <h3>Kirjan nimi 4</h3>
-        <p class="meta">Kirjailijan nimi · Kunto: hyvä</p>
-        <p class="price">400,00 €</p>
+      <article data-title="Kalevala" data-author="Elias Lönnrot" data-condition="erinomainen" data-price="2400">
+        <h3>Kalevala</h3>
+        <p class="meta">Elias Lönnrot · Kunto: erinomainen</p>
+        <p class="price">24,00 €</p>
       </article>
-      <article>
-        <h3>Kirjan nimi 5</h3>
-        <p class="meta">Kirjailijan nimi · Kunto: hyvä</p>
-        <p class="price">100,00 €</p>
+      <article data-title="Muumilaakson marraskuu" data-author="Tove Jansson" data-condition="hyvä" data-price="1000">
+        <h3>Muumilaakson marraskuu</h3>
+        <p class="meta">Tove Jansson · Kunto: hyvä</p>
+        <p class="price">10,00 €</p>
       </article>
-      <article>
-        <h3>Kirjan nimi 6</h3>
-        <p class="meta">Kirjailijan nimi · Kunto: hyvä</p>
-        <p class="price">50,00 €</p>
+      <article data-title="Puhdistus" data-author="Sofi Oksanen" data-condition="erinomainen" data-price="900">
+        <h3>Puhdistus</h3>
+        <p class="meta">Sofi Oksanen · Kunto: erinomainen</p>
+        <p class="price">9,00 €</p>
+      </article>
+      <article data-title="Anna Liisa" data-author="Minna Canth" data-condition="kohtalainen" data-price="600">
+        <h3>Anna Liisa</h3>
+        <p class="meta">Minna Canth · Kunto: kohtalainen</p>
+        <p class="price">6,00 €</p>
+      </article>
+      <article data-title="Helkavirsiä" data-author="Eino Leino" data-condition="hyvä" data-price="1100">
+        <h3>Helkavirsiä</h3>
+        <p class="meta">Eino Leino · Kunto: hyvä</p>
+        <p class="price">11,00 €</p>
+      </article>
+      <article data-title="Nuorena nukkunut" data-author="F. E. Sillanpää" data-condition="kohtalainen" data-price="700">
+        <h3>Nuorena nukkunut</h3>
+        <p class="meta">F. E. Sillanpää · Kunto: kohtalainen</p>
+        <p class="price">7,00 €</p>
+      </article>
+      <article data-title="Rautatie" data-author="Juhani Aho" data-condition="hyvä" data-price="950">
+        <h3>Rautatie</h3>
+        <p class="meta">Juhani Aho · Kunto: hyvä</p>
+        <p class="price">9,50 €</p>
+      </article>
+      <article data-title="Sudenmorsian" data-author="Aino Kallas" data-condition="erinomainen" data-price="1800">
+        <h3>Sudenmorsian</h3>
+        <p class="meta">Aino Kallas · Kunto: erinomainen</p>
+        <p class="price">18,00 €</p>
+      </article>
+      <article data-title="Dikter" data-author="Edith Södergran" data-condition="hyvä" data-price="1300">
+        <h3>Dikter</h3>
+        <p class="meta">Edith Södergran · Kunto: hyvä</p>
+        <p class="price">13,00 €</p>
       </article>
     </div>
-    <p><button type="button">Lataa lisää kirjoja</button></p>
+    <p><button type="button" id="load-more">Lataa lisää kirjoja</button></p>
   </main>
 
   <footer>
